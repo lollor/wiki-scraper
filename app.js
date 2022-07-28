@@ -15,9 +15,9 @@ app.listen(PORT, error =>{
 });
 
 
-app.get("/", async (req, res)=> {
-    let response = await scrape("https://it.wikipedia.org/wiki/Tre_uomini_e_una_gamba");
-    console.log(response);
+app.get("/:nome", async (req, res)=> {
+    let filmName = req.params.nome;
+    let response = await scrape("https://it.wikipedia.org/wiki/" + filmName);
     res.status(200).json(response);
 })
 
